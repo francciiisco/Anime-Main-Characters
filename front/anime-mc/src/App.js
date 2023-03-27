@@ -1,7 +1,7 @@
 import './App.css';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import Animal from './components/Anime'
+import Anime from './components/Anime'
 import New from './components/New'
 import Edit from './components/Edit'
 
@@ -32,11 +32,11 @@ const App = () => {
  const handleDelete = (deletedAnimemc) => {
   axios.delete('http://localhost:3000/anime/' + deletedAnimemc._id)
   .then((response) => {
-   let newAnimal = anime.filter((animemc) => {
+   let newAnime = anime.filter((animemc) => {
       return animemc._id !== deletedAnimemc._id
    })
      
-   setAnimal(newAnimal)
+   setAnime(newAnime)
   })
 }
   
@@ -75,4 +75,3 @@ const App = () => {
 }
 
 export default App
-
