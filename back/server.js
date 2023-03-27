@@ -1,25 +1,48 @@
-const express = require('express')
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const mongoose = require('mongoose');
+const Anime = require('./models')
+
+app.use(express.json());
+app.use(cors());
 
 
+app.post('/anime', (req,res) =>{
+    Anime.create(req.body)
+    .then((createdAnime) =>{
+        res.json(createdAnime)
+    })
+});
 
-const app = express()
+app.get('/anime', (req, res) =>{
+    Anime.find({})
+    .then((foundAnime) =>{
+        res.json(foundAnime)
+    })
+});
+
+app.delete('/anime/:id', (req, res) =>{
+    Anime.findByIdAndRemove(req.params.id)
+    .then((deletedAnime) =>{
+        res.json(deletedAnime)
+    })
+});
 
 
-
-app.use(express.urlencoded({extended: true}))
-
-
-
-app.get('/', (req, res) => {
-    res.send('Hellow World')
-}) 
-
-
-
-// mongoose.connect('mongodb://localhost:27017/anime').then(() => {
-//     console.log('connection with mongo is up');
-// })
-
-app.listen(3000, () => {
-    console.log('listening');
+app.put('/anime/:id', (req, res) =>{
+    Anime.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then((updatedAnime) => res.json(updatedAnime))
 })
+
+
+
+
+app.listen(3000, ()=>{
+    console.log('listening...');
+});
+
+mongoose.connect('mongodb://localhost:27017/anime')
+mongoose.connection.once('open', ()=>{
+    console.log('connected to mongod...');
+});
