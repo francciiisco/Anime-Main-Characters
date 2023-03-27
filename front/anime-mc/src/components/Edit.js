@@ -1,37 +1,38 @@
 import {useState} from 'react'
 
 const Edit = (props) => {
-    const [anime, setAnime] = useState({...props.anime})
+    const [animemc, setAnimemc] = useState({...props.anime})
 
     const handleChange = (event) => {
-        setAnime({...anime, [event.target.name]: event.target.value})
+        setAnimemc({...animemc, [event.target.name]: event.target.value})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        props.handleEdit(anime)
+        props.handleEdit(animemc)
     }
 
     return(
         <>
         <details>
-
-            <summary>Edit</summary>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='name'>Name:</label>
-                <input type='text' name='name' onChange={handleChange} value={anime.name}></input>
-                <br/>
-                <br/>
-                <label htmlFor='name'>Image:</label>
-                <input type='url' name='image' onChange={handleChange} value={anime.image}></input>
-                <br/>
-                <br/>
-                <label htmlFor='name'>Title:</label>
-                <input type='text' name='title' onChange={handleChange} value={anime.title}></input>
-                <input className='btn' type='submit'></input>
-            </form>
+          <summary>Edit Character Info</summary>
+          <form onSubmit={handleSubmit}>
+          <label htmlFor='name'>Name:</label>
+          <input type='text' name='name' onChange={handleChange} value={animemc.name}/>
+          <br/>
+          <br/>
+          <label htmlFor='title'>From:</label>
+          <input type='text' name='species' onChange={handleChange} value={animemc.title}/>
+          <br/>
+          <br/>  
+          <label htmlFor='image'>Image: </label> 
+          <input type="text" name='image' onChange={handleChange} value={animemc.image}/> 
+          <br/>
+          <br/>
+          <input type="submit"/>
+          </form>
         </details>
-        </>
+      </>
     )
 }
 
