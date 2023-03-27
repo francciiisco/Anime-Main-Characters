@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
-const Anime = require('./models')
+const Anime = require('./models/anime.js')
 
 app.use(express.json());
 app.use(cors());
