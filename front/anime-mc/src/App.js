@@ -2,7 +2,7 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Anime from './components/Anime'
-import New from './components/New'
+import New from './components/Add'
 import Edit from './components/Edit'
 
 

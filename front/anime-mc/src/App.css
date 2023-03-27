@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVbgCaquEeZyrylKA7nSg6D99gbdqm4rf0RQ&usqp=CAU');
+  background-size: contain;
+  position: sticky;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #c65a2b;
+  border: 2px solid violet;
+  width: 80%;
+}
